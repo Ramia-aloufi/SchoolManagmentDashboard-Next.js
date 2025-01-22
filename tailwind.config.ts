@@ -11,6 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        Sky: "#C3EBFA",
+        SkyLight: "#EDF9FD",
+        Purple: "#CFCEFF",
+        PurpleLight: "#CFCEFF",
+        Yellow: "#FAE27C",
+         YellowLight: "#FEFCE8"
+
       },
     },
   },
