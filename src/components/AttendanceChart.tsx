@@ -1,43 +1,10 @@
 'use client'
-import { GrMore } from "react-icons/gr";
 import { Bar, BarChart, CartesianGrid, Legend, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-const data = [
-    {
-      name: 'Mon',
-      present: 40,
-      absent: 24,
-    },
-    {
-      name: 'Tus',
-      present: 30,
-      absent: 13,
-    },
-    {
-      name: 'Wed',
-      present: 20,
-      absent: 19,
-    },
-    {
-      name: 'Thu',
-      present: 27,
-      absent: 39,
-    },
 
-    {
-      name: 'Sun',
-      present: 34,
-      absent: 43,
-    },
-  ];
-const AttendanceChart = () => {
+const AttendanceChart = ({data}:{data:{name:string,present:number,absent:number}[]}) => {
   return (
-    <div className='bg-white p-4 w-full h-full rounded-xl'>
-        {/* Title */}
-        <div className="flex justify-between items-center">
-            <h1 className='text-lg font-semibold'>Attendance</h1>
-            <GrMore/>
-        </div>
+
         <div className="w-full h-[75%] relative">
         <ResponsiveContainer width="100%" height="100%">
         <BarChart
@@ -56,7 +23,7 @@ barSize={20}
         </BarChart>
       </ResponsiveContainer>
         </div>
-    </div>
+    
   )
 }
 

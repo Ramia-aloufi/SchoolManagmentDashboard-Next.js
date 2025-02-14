@@ -1,3 +1,4 @@
+import { currentUser } from '@clerk/nextjs/server';
 import Link from 'next/link';
 import React from 'react'
 import { BsPeople } from 'react-icons/bs';
@@ -123,14 +124,16 @@ const menuItems = [
         ],
     },
 ];
-const Menu = () => {
+const Menu = async () => {
+    const user = await currentUser();
+    const role = user?.publicMetadata.role as string;
     return (
         <div className='mt-4 text-sm'>
             {menuItems.map((group, index) => (
                 <div key={index} className='flex flex-col gap-2'>
                     <span className='hidden lg:block text-gray-400 font-light my-4'>{group.title}</span>
                     {group.items.map((item, index) => {
-                        if (item.visible.includes("admin")) {
+                        if (item.visible.includes(role)) {
                             return (
                                 <Link key={index} href={item.href} className='flex items-center justify-center lg:justify-start gap-4 text-gray-400 mb-2 rounded-md hover:bg-SkyLight md:px-2'>
                                     {item.icon}

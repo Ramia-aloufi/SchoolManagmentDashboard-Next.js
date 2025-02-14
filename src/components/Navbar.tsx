@@ -1,10 +1,13 @@
+import { UserButton } from '@clerk/nextjs'
+import { currentUser } from '@clerk/nextjs/server'
 import React from 'react'
 import { BiSearch } from 'react-icons/bi'
-import { CgProfile } from 'react-icons/cg'
 import { RiMessage3Line } from 'react-icons/ri'
 import { TfiAnnouncement } from 'react-icons/tfi'
 
-const Navbar = () => {
+const Navbar = async() => {
+      const user = await currentUser();
+      const role = user?.publicMetadata.role as string;
   return (
     <div className="flex justify-between items-center p-4">
       {/* Search  */}
@@ -24,10 +27,11 @@ const Navbar = () => {
         </div>
         <div className="flex flex-col">
           <span className='text-xs leading-3 font-medium'>John doe</span>
-          <span className='text-[10px] text-gray-500 text-right'>Admin</span> 
+          <span className='text-[10px] text-gray-500 text-right'>{role}</span> 
         </div>
         <div className="rounded-full w-7 h-7 flex items-center justify-center cursor-pointer bg-purple-500">
-        <CgProfile className='text-4xl' />
+        {/* <CgProfile className='text-4xl' /> */}
+        <UserButton />
         </div>
       </div> 
     </div>
